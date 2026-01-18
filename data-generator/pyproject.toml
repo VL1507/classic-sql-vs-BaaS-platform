@@ -15,8 +15,8 @@ dependencies = [
 [dependency-groups]
 dev = [
     "mypy>=1.19.1",
- "ruff>=0.14.13",
- "sqlacodegen>=3.2.0",
+    "ruff>=0.14.13",
+    "sqlacodegen>=3.2.0",
 ]
 
 [tool.mypy]
