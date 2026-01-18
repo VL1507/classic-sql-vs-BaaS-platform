@@ -43,7 +43,7 @@ CREATE TABLE IF NOT EXISTS Devices (
 );
 
 
-CREATE TABLE IF NOT EXISTS Scenaries (
+CREATE TABLE IF NOT EXISTS Scenarios (
 	id INT NOT NULL AUTO_INCREMENT,
 	time_from TIME NOT NULL,
 	time_till TIME NOT NULL,
@@ -96,9 +96,9 @@ ADD FOREIGN KEY(device_type_id) REFERENCES DeviceTypes(id);
 ALTER TABLE CoNEToDevices
 ADD FOREIGN KEY(device_id) REFERENCES Devices(id);
 ALTER TABLE CoNEToDevices
-ADD FOREIGN KEY(scenary_id) REFERENCES Scenaries(id);
+ADD FOREIGN KEY(scenary_id) REFERENCES Scenarios(id);
 ALTER TABLE ActivationsToDevices
-ADD FOREIGN KEY(scenary_id) REFERENCES Scenaries(id);
+ADD FOREIGN KEY(scenary_id) REFERENCES Scenarios(id);
 ALTER TABLE ActivationsToDevices
 ADD FOREIGN KEY(device_id) REFERENCES Devices(id);
 ALTER TABLE DeviceTypesToUserTypes
@@ -110,6 +110,6 @@ ADD FOREIGN KEY(user_id) REFERENCES Users(id);
 ALTER TABLE Events
 ADD FOREIGN KEY(device_id) REFERENCES Devices(id);
 ALTER TABLE Events
-ADD FOREIGN KEY(scenary_id) REFERENCES Scenaries(id);
+ADD FOREIGN KEY(scenary_id) REFERENCES Scenarios(id);
 ALTER TABLE Measures
 ADD FOREIGN KEY(device_id) REFERENCES Devices(id);
