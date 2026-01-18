@@ -22,7 +22,7 @@ CREATE TABLE IF NOT EXISTS UserTypes (
 
 CREATE TABLE IF NOT EXISTS Houses (
 	id INT NOT NULL AUTO_INCREMENT,
-	adress VARCHAR(255) NOT NULL UNIQUE,
+	address VARCHAR(255) NOT NULL UNIQUE,
 	PRIMARY KEY(id)
 );
 
@@ -52,19 +52,19 @@ CREATE TABLE IF NOT EXISTS Scenarios (
 
 
 CREATE TABLE IF NOT EXISTS CoNEToDevices (
-	scenary_id INT NOT NULL,
+	scenario_id INT NOT NULL,
 	device_id INT NOT NULL,
 	is_on BOOLEAN NOT NULL,
-	PRIMARY KEY(scenary_id, device_id)
+	PRIMARY KEY(scenario_id, device_id)
 ) COMMENT='Conjunction of necessary events to devices';
 
 
 CREATE TABLE IF NOT EXISTS ActivationsToDevices (
-	scenary_id INT NOT NULL,
+	scenario_id INT NOT NULL,
 	device_id INT NOT NULL,
 	is_on BOOLEAN NOT NULL,
 	affect_time TIME,
-	PRIMARY KEY(scenary_id, device_id)
+	PRIMARY KEY(scenario_id, device_id)
 );
 
 
@@ -72,7 +72,7 @@ CREATE TABLE IF NOT EXISTS Events (
 	id INT NOT NULL AUTO_INCREMENT UNIQUE,
 	user_id INT,
 	device_id INT,
-	scenary_id INT,
+	scenario_id INT,
 	value BOOLEAN NOT NULL,
 	PRIMARY KEY(id)
 );
@@ -96,9 +96,9 @@ ADD FOREIGN KEY(device_type_id) REFERENCES DeviceTypes(id);
 ALTER TABLE CoNEToDevices
 ADD FOREIGN KEY(device_id) REFERENCES Devices(id);
 ALTER TABLE CoNEToDevices
-ADD FOREIGN KEY(scenary_id) REFERENCES Scenarios(id);
+ADD FOREIGN KEY(scenario_id) REFERENCES Scenarios(id);
 ALTER TABLE ActivationsToDevices
-ADD FOREIGN KEY(scenary_id) REFERENCES Scenarios(id);
+ADD FOREIGN KEY(scenario_id) REFERENCES Scenarios(id);
 ALTER TABLE ActivationsToDevices
 ADD FOREIGN KEY(device_id) REFERENCES Devices(id);
 ALTER TABLE DeviceTypesToUserTypes
@@ -110,6 +110,6 @@ ADD FOREIGN KEY(user_id) REFERENCES Users(id);
 ALTER TABLE Events
 ADD FOREIGN KEY(device_id) REFERENCES Devices(id);
 ALTER TABLE Events
-ADD FOREIGN KEY(scenary_id) REFERENCES Scenarios(id);
+ADD FOREIGN KEY(scenario_id) REFERENCES Scenarios(id);
 ALTER TABLE Measures
 ADD FOREIGN KEY(device_id) REFERENCES Devices(id);
