@@ -65,7 +65,7 @@ def create_reference_data(
     session.flush()
 
     associations = []
-    for dt in device_types:
+    for dt in tqdm(device_types, desc="device_types"):
         allowed_user_types = random.sample(
             user_types, k=random.randint(1, len(user_types))
         )
