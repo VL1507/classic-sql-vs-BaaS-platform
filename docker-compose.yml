@@ -16,3 +16,6 @@ services:
       retries: 10
       interval: 10s
       start_period: 40s
+
+volumes:
+  mysql_data:
