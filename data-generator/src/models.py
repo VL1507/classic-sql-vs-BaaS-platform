@@ -96,8 +96,8 @@ class DeviceTypesToUserTypes(Base):
         ),
         Index("user_type_id", "user_type_id"),
     )
-    device_type_id: int = mapped_column(INTEGER(11), primary_key=True)
-    user_type_id: int = mapped_column(INTEGER(11), primary_key=True)
+    device_type_id: Mapped[int] = mapped_column(INTEGER(11), primary_key=True)
+    user_type_id: Mapped[int] = mapped_column(INTEGER(11), primary_key=True)
 
 
 class Devices(Base):
