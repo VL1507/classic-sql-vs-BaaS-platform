@@ -15,3 +15,10 @@ dev = [
     "mypy>=1.19.1",
     "ruff>=0.14.13",
 ]
+
+[tool.mypy]
+strict = true
+strict_bytes = true
+local_partial_types = true
+warn_unreachable = true
+explicit_package_bases = true
