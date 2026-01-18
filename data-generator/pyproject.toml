@@ -8,6 +8,7 @@ dependencies = [
     "faker>=40.1.2",
     "mysql-connector-python>=9.5.0",
     "python-dotenv>=1.2.1",
+    "sqlalchemy>=2.0.45",
 ]
 
 [dependency-groups]
