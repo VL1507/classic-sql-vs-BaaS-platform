@@ -1,0 +1,18 @@
+services:
+  shch-mysql:
+    image: mysql:8.0.16
+    container_name: shch-mysql
+    environment:
+      MYSQL_ROOT_PASSWORD: ${DATA_MYSQL_PASSWORD}
+      MYSQL_DATABASE: app
+    ports:
+      - "3306:3306"
+    volumes:
+      - ./init-db:/docker-entrypoint-initdb.d/
+      - mysql_data:/var/lib/mysql
+    healthcheck:
+      test: ["CMD", "mysql", "-uroot", "-p${DATA_MYSQL_PASSWORD}", "-e", "USE app; SELECT 1;"]
+      timeout: 30s
+      retries: 10
+      interval: 10s
+      start_period: 40s
