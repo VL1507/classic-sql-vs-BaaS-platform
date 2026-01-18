@@ -88,28 +88,28 @@ CREATE TABLE IF NOT EXISTS Measures (
 
 
 ALTER TABLE Users
-ADD FOREIGN KEY(user_type_id) REFERENCES UserTypes(id)
+ADD FOREIGN KEY(user_type_id) REFERENCES UserTypes(id);
 ALTER TABLE Devices
-ADD FOREIGN KEY(house_id) REFERENCES Houses(id)
-ALTER TABLE Devices
-ADD FOREIGN KEY(devise_type_id) REFERENCES DeviceTypes(id)
+ADD FOREIGN KEY(house_id) REFERENCES Houses(id);
+ALTER TABLE Devices	
+ADD FOREIGN KEY(devise_type_id) REFERENCES DeviceTypes(id);
 ALTER TABLE CoNEToDevises
-ADD FOREIGN KEY(device_id) REFERENCES Devices(id)
+ADD FOREIGN KEY(device_id) REFERENCES Devices(id);
 ALTER TABLE CoNEToDevises
-ADD FOREIGN KEY(scenary_id) REFERENCES Scenaries(id)
+ADD FOREIGN KEY(scenary_id) REFERENCES Scenaries(id);
 ALTER TABLE ActivationsToDevices
-ADD FOREIGN KEY(scenary_id) REFERENCES Scenaries(id)
+ADD FOREIGN KEY(scenary_id) REFERENCES Scenaries(id);
 ALTER TABLE ActivationsToDevices
-ADD FOREIGN KEY(device_id) REFERENCES Devices(id)
+ADD FOREIGN KEY(device_id) REFERENCES Devices(id);
 ALTER TABLE DeviceTypesToUserTypes
-ADD FOREIGN KEY(device_type_id) REFERENCES UserTypes(id)
+ADD FOREIGN KEY(device_type_id) REFERENCES UserTypes(id);
 ALTER TABLE DeviceTypesToUserTypes
-ADD FOREIGN KEY(user_type_id) REFERENCES DeviceTypes(id)
+ADD FOREIGN KEY(user_type_id) REFERENCES DeviceTypes(id);
 ALTER TABLE Events
-ADD FOREIGN KEY(user_id) REFERENCES Users(id)
+ADD FOREIGN KEY(user_id) REFERENCES Users(id);
 ALTER TABLE Events
-ADD FOREIGN KEY(device_id) REFERENCES Devices(id)
+ADD FOREIGN KEY(device_id) REFERENCES Devices(id);
 ALTER TABLE Events
-ADD FOREIGN KEY(scenary_id) REFERENCES Scenaries(id)
+ADD FOREIGN KEY(scenary_id) REFERENCES Scenaries(id);
 ALTER TABLE Measures
-ADD FOREIGN KEY(device_id) REFERENCES Devices(id)
+ADD FOREIGN KEY(device_id) REFERENCES Devices(id);
