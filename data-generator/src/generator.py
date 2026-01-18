@@ -89,7 +89,12 @@ def create_houses_and_devices(
     all_devices: list[Devices] = []
 
     for _ in tqdm(range(count_houses), desc="create_houses_and_devices"):
-        house = Houses(address=fake.address().replace("\n", ", "))
+        house = Houses(
+            address=(
+                fake.address()
+                # .replace("\n", ", ")
+            )
+        )
         houses.append(house)
         session.add(house)
         session.flush()
