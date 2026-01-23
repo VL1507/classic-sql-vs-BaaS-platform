@@ -1,7 +1,4 @@
-import datetime
-import decimal
 from dataclasses import dataclass
-from typing import Optional
 
 
 @dataclass
@@ -38,16 +35,16 @@ class UserTypes:
 class DeviceTypesToUserTypes:
     object_id: str | None
 
-    device_type_id: int
-    user_type_id: int
+    device_type_id: str
+    user_type_id: str
 
 
 @dataclass
 class Devices:
     object_id: str | None
 
-    house_id: int
-    device_type_id: int
+    house_id: str
+    device_type_id: str
 
 
 @dataclass
@@ -55,21 +52,25 @@ class Users:
     object_id: str | None
 
     name: str
-    user_type_id: int
+    user_type_id: str
 
 
 @dataclass
 class ActivationsToDevices:
-    scenario_id: int
-    device_id: int
+    object_id: str | None
+
+    scenario_id: str
+    device_id: str
     is_on: bool
-    affect_time: datetime.time | None
+    affect_time: int | None
 
 
 @dataclass
 class CoNEToDevices:
-    scenario_id: int
-    device_id: int
+    object_id: str | None
+
+    scenario_id: str
+    device_id: str
     is_on: bool
 
 
@@ -78,15 +79,15 @@ class Events:
     object_id: str | None
 
     value: bool
-    user_id: int | None
-    device_id: int | None
-    scenario_id: int | None
+    user_id: str | None
+    device_id: str | None
+    scenario_id: str | None
 
 
 @dataclass
 class Measures:
     object_id: str | None
 
-    device_id: int
-    measure_time: datetime.datetime
-    value: decimal.Decimal | None
+    device_id: str
+    measure_time: int
+    value: int | None
