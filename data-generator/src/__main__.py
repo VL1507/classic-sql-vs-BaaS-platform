@@ -1,7 +1,7 @@
 import logging
 
-from db_conn import Session
-from generator import populate_database
+from db.db_conn import Session
+from db.gen_insert_db import populate_database
 
 
 def main() -> None:

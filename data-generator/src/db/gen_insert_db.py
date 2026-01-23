@@ -1,3 +1,4 @@
+import logging
 import random
 from datetime import UTC, datetime, time, timedelta
 from decimal import Decimal
@@ -7,7 +8,7 @@ from faker import Faker
 from sqlalchemy.orm import Session
 from tqdm import tqdm
 
-from models import (
+from db.models import (
     ActivationsToDevices,
     Base,
     CoNEToDevices,
@@ -24,8 +25,9 @@ from models import (
 
 logger = getLogger(name=__name__)
 
+random.seed(42)
 
-# Faker(42)
+Faker.seed(42)
 
 fake = Faker("ru_RU")
 
@@ -64,7 +66,7 @@ def create_reference_data(
     session.add_all(device_types)
     session.flush()
 
-    associations = []
+    associations: list[DeviceTypesToUserTypes] = []
     for dt in tqdm(device_types, desc="device_types"):
         allowed_user_types = random.sample(
             user_types, k=random.randint(1, len(user_types))
@@ -257,3 +259,13 @@ def populate_database(session: Session, *, clear_first: bool = True) -> None:
         f"  сценариев    : {len(scenarios)}"
     )
     logger.info(log)
+
+
+def main() -> None:
+    logging.basicConfig(level=logging.DEBUG)
+    with Session() as session:
+        populate_database(session, clear_first=True)
+
+
+if __name__ == "__main__":
+    main()
