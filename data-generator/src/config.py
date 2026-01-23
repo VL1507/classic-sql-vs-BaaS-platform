@@ -13,3 +13,7 @@ DB_NAME = os.getenv("DB_NAME")
 DB_URL = (
     f"mysql+pymysql://{DB_USER}:{DB_PASSWORD}@{DB_HOST}:{DB_PORT}/{DB_NAME}"
 )
+
+
+BACK4APP_APPLICATION_ID = os.getenv("BACK4APP_APPLICATION_ID")
+BACK4APP_REST_API_KEY = os.getenv("BACK4APP_REST_API_KEY")
