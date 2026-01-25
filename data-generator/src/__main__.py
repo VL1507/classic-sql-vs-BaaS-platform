@@ -3,8 +3,6 @@ import logging
 from bass.bass_api import Back4AppApi
 from bass.gen_insert_bass import populate_bass
 from config import BACK4APP_APPLICATION_ID, BACK4APP_REST_API_KEY
-from db.db_conn import Session
-from db.gen_insert_db import populate_database
 
 
 def main() -> None:
