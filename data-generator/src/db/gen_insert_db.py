@@ -259,13 +259,3 @@ def populate_database(session: Session, *, clear_first: bool = True) -> None:
         f"  сценариев    : {len(scenarios)}"
     )
     logger.info(log)
-
-
-def main() -> None:
-    logging.basicConfig(level=logging.DEBUG)
-    with Session() as session:
-        populate_database(session, clear_first=True)
-
-
-if __name__ == "__main__":
-    main()
