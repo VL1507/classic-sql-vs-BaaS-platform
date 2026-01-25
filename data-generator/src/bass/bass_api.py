@@ -16,7 +16,7 @@ class Back4AppApi:
             url=self.base_url + "UserTypes",
             json=json_data,
             headers=self.headers,
-            timeout=10,
+            timeout=30,
         )
         return res.json()["objectId"]
 
@@ -26,7 +26,7 @@ class Back4AppApi:
             url=self.base_url + "Houses",
             json=json_data,
             headers=self.headers,
-            timeout=10,
+            timeout=30,
         )
         return res.json()["objectId"]
 
@@ -36,7 +36,7 @@ class Back4AppApi:
             url=self.base_url + "DeviceTypes",
             json=json_data,
             headers=self.headers,
-            timeout=10,
+            timeout=30,
         )
         return res.json()["objectId"]
 
@@ -46,7 +46,7 @@ class Back4AppApi:
             url=self.base_url + "Scenaries",
             json=json_data,
             headers=self.headers,
-            timeout=10,
+            timeout=30,
         )
         return res.json()["objectId"]
 
@@ -69,7 +69,7 @@ class Back4AppApi:
             url=self.base_url + "DeviceTypesToUserTypes",
             json=json_data,
             headers=self.headers,
-            timeout=10,
+            timeout=30,
         )
         return res.json()["objectId"]
 
@@ -86,28 +86,28 @@ class Back4AppApi:
             url=self.base_url + "Users",
             json=json_data,
             headers=self.headers,
-            timeout=10,
+            timeout=30,
         )
         return res.json()["objectId"]
 
-    def create_devices(self, house_id: str, devise_type_id: str) -> str:
+    def create_devices(self, house_id: str, device_type_id: str) -> str:
         json_data = {
             "house_id": {
                 "__type": "Pointer",
                 "className": "Houses",
                 "objectId": house_id,
             },
-            "devise_type_id": {
+            "device_type_id": {
                 "__type": "Pointer",
                 "className": "DeviceTypes",
-                "objectId": devise_type_id,
+                "objectId": device_type_id,
             },
         }
         res = requests.post(
             url=self.base_url + "Devices",
             json=json_data,
             headers=self.headers,
-            timeout=10,
+            timeout=30,
         )
         return res.json()["objectId"]
 
@@ -131,7 +131,7 @@ class Back4AppApi:
             url=self.base_url + "CoNEToDevises",
             json=json_data,
             headers=self.headers,
-            timeout=10,
+            timeout=30,
         )
         return res.json()["objectId"]
 
@@ -156,7 +156,7 @@ class Back4AppApi:
             url=self.base_url + "ActivationsToDevices",
             json=json_data,
             headers=self.headers,
-            timeout=10,
+            timeout=30,
         )
         return res.json()["objectId"]
 
@@ -189,7 +189,7 @@ class Back4AppApi:
             url=self.base_url + "Events",
             json=json_data,
             headers=self.headers,
-            timeout=10,
+            timeout=30,
         )
         return res.json()["objectId"]
 
@@ -212,6 +212,6 @@ class Back4AppApi:
             url=self.base_url + "Measures",
             json=json_data,
             headers=self.headers,
-            timeout=10,
+            timeout=30,
         )
         return res.json()["objectId"]
