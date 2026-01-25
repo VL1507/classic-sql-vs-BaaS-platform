@@ -1,6 +1,5 @@
 import random
 from datetime import UTC, datetime, time, timedelta
-from decimal import Decimal
 from logging import getLogger
 
 from faker import Faker
@@ -128,7 +127,7 @@ def create_houses_and_devices(
                 device_type_id=dt.object_id,
             )
             object_id = back4app_api.create_devices(
-                house_id=device.house_id, devise_type_id=device.device_type_id
+                house_id=device.house_id, device_type_id=device.device_type_id
             )
             device.object_id = object_id
             all_devices.append(device)
@@ -295,11 +294,6 @@ def populate_bass(
     """
     Основная функция - запуск всего генератора
     """
-    # if clear_first:
-    #     for table in tqdm(
-    #         reversed(Base.metadata.sorted_tables), desc="table.delete"
-    #     ):
-    #         session.execute(table.delete())
 
     user_types, device_types = create_reference_data(back4app_api)
     houses, devices = create_houses_and_devices(
@@ -311,7 +305,6 @@ def populate_bass(
     create_activations_and_cone(back4app_api, devices, scenarios)
     create_events_and_measures(back4app_api, users, devices, scenarios)
 
-    # session.commit()
     log = (
         f"Сгенерировано:\n"
         f"  домов       : {len(houses)}\n"
