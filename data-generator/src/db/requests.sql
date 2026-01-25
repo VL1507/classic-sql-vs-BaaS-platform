@@ -21,7 +21,8 @@ WHERE dt.type = 'thermostat'
 ORDER BY m.value DESC
 LIMIT 1;
 -- Все "умные" дома. Дома в которых есть сценарии
-SELECT DISTINCT h.*
+SELECT DISTINCT h.id,
+    h.address
 FROM Houses h
     INNER JOIN Devices d ON h.id = d.house_id
     INNER JOIN ActivationsToDevices atd ON d.id = atd.device_id;
